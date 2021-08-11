@@ -35,7 +35,7 @@
                         <td> ' . $product['cod_barras'] . '</td>
                         <td> ' . $product['valor_unitario'] .  '</td>
                         <td>
-                            <a href="./alterarProducts.php?id=' . $product['id'] . '"><i class="far fa-edit"></i></a>
+                            <a href="./formUpdateProducts.php?id=' . $product['id'] . '"><i class="far fa-edit"></i></a>
                             <a href="./deleteProducts.php?id=' . $product['id'] . '"><i class="far fa-trash-alt"></i></a>
                         </td>
                     </tr>

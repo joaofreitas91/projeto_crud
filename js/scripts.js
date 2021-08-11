@@ -26,3 +26,6 @@ function backHome() {
 function backClient() {
     window.location.href = "../cliente/readClient.php"
 }
+function backProduct() {
+    window.location.href = "../produtos/readProducts.php"
+}
