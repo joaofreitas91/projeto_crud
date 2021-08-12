@@ -21,12 +21,15 @@
     <div class="cont-form">
         <h1 class="title-form">Alteração de Produto</h1>
         <form method="POST" action="./updateProducts.php" class="form">
-            <label for="nome_cliente" class="label-form">Nome Produto:</label>
-            <input type="text" class="inp-form" id="nome_cliente" name="nome_cliente" value="<?php echo $dataProduct[0]["nome_produto"] ?>" autocomplete="off" required />
-            <label for="cpf" class="label-form">Código de Barras:</label>
-            <input type="text" class="inp-form" id="cpf" name="cpf" value="<?php echo $dataProduct[0]["cod_barras"] ?>" autocomplete="off" required />
-            <label for="email" class="label-form">Valor Unitário:</label>
-            <input type="text" class="inp-form" id="email" name="email" value="<?php echo $dataProduct[0]["valor_unitario"] ?>" autocomplete="off" />
+            <label for="nome_produto" class="label-form">Nome Produto:</label>
+            <input type="text" class="inp-form" id="nome_produto" name="nome_produto" value="<?php echo $dataProduct[0]["nome_produto"] ?>" autocomplete="off" required />
+
+            <label for="cod_barras" class="label-form">Código de Barras:</label>
+            <input type="text" class="inp-form" id="cod_barras" name="cod_barras" value="<?php echo $dataProduct[0]["cod_barras"] ?>" autocomplete="off" required />
+
+            <label for="valor_unitario" class="label-form">Valor Unitário:</label>
+            <input type="text" class="inp-form" id="valor_unitario" name="valor_unitario" value="<?php echo $dataProduct[0]["valor_unitario"] ?>" autocomplete="off" />
+
             <input type="hidden" name="id" value="<?php echo $dataProduct[0]["id"] ?>" />
             <div class="btns-form">
                 <input type="submit" class="btn-form" value="Alterar Produto" />

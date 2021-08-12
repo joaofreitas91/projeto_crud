@@ -16,15 +16,17 @@
 
 // }
 
-function cadClient() {
-    window.location.href = "../cliente/formCreateClient.html"
-}
 function backHome() {
     window.location.href = "../index.html"
 }
-
+function cadClient() {
+    window.location.href = "../cliente/formCreateClient.html"
+}
 function backClient() {
     window.location.href = "../cliente/readClient.php"
+}
+function cadProduto() {
+    window.location.href = "../produtos/formCreateProducts.html"
 }
 function backProduct() {
     window.location.href = "../produtos/readProducts.php"
