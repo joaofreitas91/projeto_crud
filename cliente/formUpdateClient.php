@@ -13,7 +13,7 @@
 <body>
     <?php
     include_once('../php/connection.php');
-    $select = $connection->query('SELECT * FROM cliente WHERE id=' . $_GET["id"]);
+    $select = $connection->query('SELECT * FROM customers WHERE id=' . $_GET["id"]);
     $dataClient = $select->fetchAll();
     // print_r($dataClient);
     ?>
@@ -21,8 +21,8 @@
     <div class="cont-form">
         <h1 class="title-form">Alteração de Cliente</h1>
         <form method="POST" action="./updateClient.php" class="form">
-            <label for="nome_cliente" class="label-form">Nome:</label>
-            <input type="text" class="inp-form" id="nome_cliente" name="nome_cliente" value="<?php echo $dataClient[0]["nome_cliente"] ?>" autocomplete="off" required />
+            <label for="name_client" class="label-form">Nome:</label>
+            <input type="text" class="inp-form" id="name_client" name="name_client" value="<?php echo $dataClient[0]["name_client"] ?>" autocomplete="off" required />
             <label for="cpf" class="label-form">CPF:</label>
             <input type="text" class="inp-form" id="cpf" name="cpf" value="<?php echo $dataClient[0]["cpf"] ?>" autocomplete="off" required />
             <label for="email" class="label-form">Email:</label>

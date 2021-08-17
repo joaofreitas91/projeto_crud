@@ -14,8 +14,8 @@
 <body>
     <main>
         <div class="nav-client">
-            <input type="button" value="Cadastrar" class="btn-new-client" onclick="cadClient()">
-            <input type="button" value="Voltar" class="btn-new-client" onclick="backHome()">
+            <input type="button" value="Cadastrar" class="btn-new" onclick="cadClient()">
+            <input type="button" value="Voltar" class="btn-new" onclick="backHome()">
         </div>
         <table>
             <tr>
@@ -27,18 +27,18 @@
             <?php
             include_once('../php/connection.php');
 
-            $select = $connection->query('SELECT * FROM cliente');
-            foreach ($select as $client) {
+            $customers = $connection->query('SELECT * FROM customers');
+            foreach ($customers as $customer) {
 
                 echo  '
 
         <tr>
-            <td> ' . $client['nome_cliente'] . ' </td>
-            <td> ' . $client['cpf'] . '</td>
-            <td> ' . $client['email'] .  '</td>
+            <td> ' . $customer['name_client'] . ' </td>
+            <td> ' . $customer['cpf'] . '</td>
+            <td> ' . $customer['email'] .  '</td>
             <td>
-                <a href="./formUpdateClient.php?id=' . $client['id'] . '"><i class="far fa-edit"></i></a>
-                <a href="./deleteClient.php?id=' . $client['id'] . '"><i class="far fa-trash-alt"></i></a>
+                <a href="./formUpdateClient.php?id=' . $customer['id'] . '"><i class="far fa-edit"></i></a>
+                <a href="./deleteClient.php?id=' . $customer['id'] . '"><i class="far fa-trash-alt"></i></a>
             </td>
         </tr>
     ';

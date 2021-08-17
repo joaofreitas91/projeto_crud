@@ -14,8 +14,8 @@
 <body>
     <main>
         <div class="nav-client">
-            <input type="button" value="Cadastrar" class="btn-new-client" onclick="cadProduto()">
-            <input type="button" value="Voltar" class="btn-new-client" onclick="backHome()">
+            <input type="button" value="Cadastrar" class="btn-new" onclick="cadProduto()">
+            <input type="button" value="Voltar" class="btn-new" onclick="backHome()">
         </div>
         <table>
             <tr>

@@ -1,7 +1,7 @@
 <?php
 
 $hostname = 'localhost';
-$database = 'projeto_php_estruturado';
+$database = 'project_php';
 $user = 'root';
 $pass = '';
 

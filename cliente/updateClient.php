@@ -3,7 +3,7 @@
 include_once('../php/connection.php');
 
 $id = $_POST["id"];
-$name = $_POST["nome_cliente"];
+$name = $_POST["name_client"];
 $cpf = $_POST["cpf"];
 $email = $_POST["email"];
 
@@ -13,7 +13,7 @@ $email = $_POST["email"];
 // echo $cpf;
 // echo $email;
 
-$update = $connection->exec("UPDATE cliente SET nome_cliente='$name', cpf=$cpf, email='$email' WHERE id=$id");
+$update = $connection->exec("UPDATE customers SET name_client='$name', cpf=$cpf, email='$email' WHERE id=$id");
 ?>
 
 <script>

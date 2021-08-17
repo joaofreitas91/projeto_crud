@@ -31,3 +31,9 @@ function cadProduto() {
 function backProduct() {
     window.location.href = "../produtos/readProducts.php"
 }
+function cadOrder() {
+    window.location.href = "../order/formCreateOrder.html"
+}
+function backOrder() {
+    window.location.href = "../order/readOrder.php"
+}
