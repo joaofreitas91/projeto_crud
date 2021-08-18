@@ -11,12 +11,17 @@
 
 <body>
     <form method="POST" action="./createProducts.php">
-        <label for="nome_produto">Nome Produto:</label>
-        <input type="text" id="nome_produto" name="nome_produto" required />
+
+        <label for="name_product">Nome Produto:</label>
+        <input type="text" id="name_product" name="name_product" required />
+
         <label for="cod_barras">Código de Barras:</label>
-        <input type="text" id="cod_barras" name="cod_barras" required />
+        <input type="text" id="cod_barras" name="bar_code" required />
+
         <label for="valor_unitario">Valor Unitário:</label>
-        <input type="text" id="valor_unitario" name="valor_unitario" />
+        <input type="text" id="valor_unitario" name="unitary_value" />
+
+
         <input type="submit" value="Cadastrar" />
     </form>
 </body>

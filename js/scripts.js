@@ -32,8 +32,22 @@ function backProduct() {
     window.location.href = "../produtos/readProducts.php"
 }
 function cadOrder() {
-    window.location.href = "../order/formCreateOrder.html"
+    window.location.href = "../order/formCreateOrder.php"
 }
 function backOrder() {
     window.location.href = "../order/readOrder.php"
+}
+
+
+var iptUn = document.getElementById("valor_unitario");
+var inpQt = document.getElementById("quantidade");
+var inpTl = document.getElementById("total");
+
+function somar() {
+    console.log(inpQt.value)
+    console.log(iptUn.value)
+
+    let total = inpQt.value * iptUn.value
+    inpTl.value = total
+    // inpTl.innerText = total
 }

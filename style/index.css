@@ -117,6 +117,10 @@ td, th {
     color: #fff;
 }
 
+.list-order {
+    display: flex;
+}
+
 /* formulario */
 
 .label-form {
@@ -161,6 +165,12 @@ td, th {
 .form {
     display: flex;
     flex-direction: column;
+    width: 300px;
+    margin: auto;
+}
+
+.form label {
+    color: #fff;
 }
 
 @media only screen and (min-width: 500px) {

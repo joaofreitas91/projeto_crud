@@ -27,13 +27,13 @@
             <?php
             include_once('../php/connection.php');
 
-            $select = $connection->query('SELECT * FROM produto');
-            foreach ($select as $product) {
+            $produtos = $connection->query('SELECT * FROM products');
+            foreach ($produtos as $product) {
                 echo  '
                     <tr>
-                        <td> ' . $product['nome_produto'] . ' </td>
-                        <td> ' . $product['cod_barras'] . '</td>
-                        <td> ' . $product['valor_unitario'] .  '</td>
+                        <td> ' . $product['name_product'] . ' </td>
+                        <td> ' . $product['bar_code'] . '</td>
+                        <td> ' . $product['unitary_value'] .  '</td>
                         <td>
                             <a href="./formUpdateProducts.php?id=' . $product['id'] . '"><i class="far fa-edit"></i></a>
                             <a href="./deleteProducts.php?id=' . $product['id'] . '"><i class="far fa-trash-alt"></i></a>

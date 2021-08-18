@@ -19,7 +19,7 @@
         </div>
         <table>
             <tr>
-                <th>Numéro da Ordem</th>
+                <th>Número da Ordem</th>
                 <th>Data da Ordem</th>
                 <th>Cliente</th>
                 <th>Produto</th>
@@ -31,20 +31,22 @@
             <?php
             include_once('../php/connection.php');
 
-            $select = $connection->query('SELECT * FROM orders');
+            $select = $connection->query('select o.order_number, o.order_date, c.name_client, p.name_product, p.unitary_value, o.quantity, o.total from orders o join customers c on o.client_id = c.id join products p on o.product_id = p.id');
             foreach ($select as $order) {
                 echo  '
                     <tr>
                         <td> ' . $order['order_number'] . ' </td>
                         <td> ' . $order['order_date'] . '</td>
-                        <td> ' . $order['client_id'] .  '</td>
-                        <td> ' . $order['product_id'] .  '</td>
-                        <td> valor Unitario aqui</td>
+                        <td> ' . $order['name_client'] .  '</td>
+                        <td> ' . $order['name_product'] .  '</td>
+                        <td> ' . $order['unitary_value'] .  '</td>
                         <td> ' . $order['quantity'] .  '</td>
-                        <td> valor Total aqui</td>
-                        <td>
-                            <a href="./formCreateOrder.html?id=' . $order['order_number'] . '"><i class="far fa-edit"></i></a>
-                            <a href="./deleteOrder.php?id=' . $order['order_number'] . '"><i class="far fa-trash-alt"></i></a>
+                        <td> ' . $order['total'] .  '</td>
+                        <td >
+                            <div class="list-order">
+                                <a href="./formCreateOrder.php?id=' . $order['order_number'] . '"><i class="far fa-edit"></i></a>
+                                <a href="./deleteOrder.php?id=' . $order['order_number'] . '"><i class="far fa-trash-alt"></i></a>
+                            </div>
                         </td>
                     </tr>
                         ';

@@ -31,8 +31,8 @@ drop table if exists products;
 
 create table if not exists products(
 	id int not null auto_increment primary key,
-    bar_code varchar(40) not null unique key,
     name_product varchar(255) not null,
+    bar_code varchar(40) not null unique key,
     unitary_value decimal(8,2) not null
 );
 
@@ -58,20 +58,29 @@ create table if not exists orders(
     client_id int not null,
     product_id int not null,
     quantity int not null,
+	total decimal (8,2) not null,
     foreign key (client_id) references customers (id),
     foreign key (product_id) references products (id)
 );
 
 insert into orders values
-	(DEFAULT, now(), 1, 1, 10),
-    (DEFAULT, now(), 2, 2, 15),
-    (DEFAULT, now(), 3, 3, 20),
-    (DEFAULT, now(), 4, 4, 25),
-    (DEFAULT, now(), 5, 5, 19),
-    (DEFAULT, now(), 6, 6, 35),
-    (DEFAULT, now(), 7, 7, 6),
-    (DEFAULT, now(), 8, 8, 10),
-    (DEFAULT, now(), 9, 9, 8),
-    (DEFAULT, now(), 10, 10, 5);
+	(DEFAULT, now(), 1, 1, 10, 10.90),
+	(DEFAULT, now(), 2, 2, 15, 10.90),
+	(DEFAULT, now(), 3, 3, 20, 10.90),
+	(DEFAULT, now(), 4, 4, 25, 10.90),
+	(DEFAULT, now(), 5, 5, 19, 10.90),
+	(DEFAULT, now(), 6, 6, 35, 10.90),
+	(DEFAULT, now(), 7, 7, 6, 10.90),
+	(DEFAULT, now(), 8, 8, 10, 10.90),
+	(DEFAULT, now(), 9, 9, 8, 10.90),
+	(DEFAULT, now(), 10, 10, 5, 10.90);
     
 select * from orders;
+select * from orders; 
+desc orders;
+
+select o.order_number, o.order_date, c.name_client, p.name_product, p.unitary_value, o.quantity, o.total
+from orders o join customers c on o.client_id = c.id
+join products p on o.product_id = p.id;
+
+
