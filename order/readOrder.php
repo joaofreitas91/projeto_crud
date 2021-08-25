@@ -31,7 +31,7 @@
             <?php
             include_once('../php/connection.php');
 
-            $select = $connection->query('select o.order_number, o.order_date, c.name_client, p.name_product, p.unitary_value, o.quantity, o.total from orders o join customers c on o.client_id = c.id join products p on o.product_id = p.id');
+            $select = $connection->query('select o.order_number, o.order_date, c.name_client, p.name_product, p.unitary_value, o.quantity, o.total from orders o join customers c on o.client_id = c.id join products p on o.product_id = p.id where deleted_at is null order by o.order_number');
             foreach ($select as $order) {
                 echo  '
                     <tr>
@@ -44,7 +44,7 @@
                         <td> ' . $order['total'] .  '</td>
                         <td >
                             <div class="list-order">
-                                <a href="./formCreateOrder.php?id=' . $order['order_number'] . '"><i class="far fa-edit"></i></a>
+                                <a href="./formUpdateOrder.php?id=' . $order['order_number'] . '"><i class="far fa-edit"></i></a>
                                 <a href="./deleteOrder.php?id=' . $order['order_number'] . '"><i class="far fa-trash-alt"></i></a>
                             </div>
                         </td>

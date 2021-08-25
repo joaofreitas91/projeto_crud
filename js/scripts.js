@@ -44,10 +44,14 @@ var inpQt = document.getElementById("quantidade");
 var inpTl = document.getElementById("total");
 
 function somar() {
-    console.log(inpQt.value)
-    console.log(iptUn.value)
 
-    let total = inpQt.value * iptUn.value
-    inpTl.value = total
-    // inpTl.innerText = total
+    if (inpQt.value !== "" && iptUn.value !== "") {
+        let total = inpQt.value * iptUn.value
+        inpTl.value = total
+    }
 }
+
+// In your Javascript (external .js resource or <script> tag)
+// $(document).ready(function () {
+//     $('.js-example-basic-single').select2();
+// });

@@ -7,34 +7,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/index.css">
     <script src="../js/scripts.js"></script>
-    <title>Alterar Cliente</title>
+    <title>Alterar Ordem</title>
 </head>
 
 <body>
     <?php
     include_once('../php/connection.php');
-    $select = $connection->query('SELECT * FROM produto WHERE id=' . $_GET["id"]);
+    $select = $connection->query('SELECT * FROM orders WHERE order_number=' . $_GET["id"]);
     $dataProduct = $select->fetchAll();
-    // print_r($dataProduct);
+    print_r($dataProduct);
     ?>
 
     <div class="cont-form">
-        <h1 class="title-form">Alteração de Produto</h1>
-        <form method="POST" action="./updateProducts.php" class="form">
-            <label for="nome_produto" class="label-form">Nome Produto:</label>
-            <input type="text" class="inp-form" id="nome_produto" name="nome_produto" value="<?php echo $dataProduct[0]["nome_produto"] ?>" autocomplete="off" required />
+        <h1 class="title-form">Alteração de Ordem</h1>
+        <form method="POST" action="" class="form">
 
-            <label for="cod_barras" class="label-form">Código de Barras:</label>
-            <input type="text" class="inp-form" id="cod_barras" name="cod_barras" value="<?php echo $dataProduct[0]["cod_barras"] ?>" autocomplete="off" required />
+            <label for="name_client">Nome Cliente:</label>
 
-            <label for="valor_unitario" class="label-form">Valor Unitário:</label>
-            <input type="text" class="inp-form" id="valor_unitario" name="valor_unitario" value="<?php echo $dataProduct[0]["valor_unitario"] ?>" autocomplete="off" />
 
-            <input type="hidden" name="id" value="<?php echo $dataProduct[0]["id"] ?>" />
-            <div class="btns-form">
-                <input type="submit" class="btn-form" value="Alterar Produto" />
-                <input type="button" class="btn-form" value="Voltar" onclick="backProduct()" />
-            </div>
+            <select name="name_client" id="name_client">
+                <option></option>
+                <?php
+                include_once('../php/connection.php');
+                $customers = $connection->query('select * from customers');
+                foreach ($customers as $cliente) {
+                    echo '
+                <option value="' . $cliente['id'] . '">' . $cliente['name_client'] . '</option>
+                ';
+                }
+                ?>
+            </select>
+
+            <label for="nome_produto">Nome Produto:</label>
+            <select name="name_product" id="name_product">
+                <option></option>
+                <?php
+                include_once('../php/connection.php');
+                $products = $connection->query('select * from products');
+                foreach ($products as $product) {
+                    echo '
+                <option value="' . $product['id'] . '">' . $product['name_product'] . '</option>
+                ';
+                }
+                ?>
+            </select>
+
+            <label for="valor_unitario">Valor Unitário:</label>
+            <input type="text" id="valor_unitario" name="valor_unitario" autocomplete="off" maxlength="13" oninput="somar()" />
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="text" id="quantidade" name="quantidade" autocomplete="off" oninput="somar()" />
+
+            <label for="total">Total</label>
+            <input type="text" id="total" name="total" readonly>
+            <!-- <span type="text" id="total" name="total"> Valor Total </span> -->
+            <br>
+            <!-- <input type="button" value="Somar" onclick="somar()" /> -->
+            <input type="submit" value="Cadastrar" />
+
         </form>
     </div>
 

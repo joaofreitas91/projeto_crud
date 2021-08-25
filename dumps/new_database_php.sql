@@ -59,21 +59,22 @@ create table if not exists orders(
     product_id int not null,
     quantity int not null,
 	total decimal (8,2) not null,
+    deleted_at datetime default null,
     foreign key (client_id) references customers (id),
     foreign key (product_id) references products (id)
 );
 
 insert into orders values
-	(DEFAULT, now(), 1, 1, 10, 10.90),
-	(DEFAULT, now(), 2, 2, 15, 10.90),
-	(DEFAULT, now(), 3, 3, 20, 10.90),
-	(DEFAULT, now(), 4, 4, 25, 10.90),
-	(DEFAULT, now(), 5, 5, 19, 10.90),
-	(DEFAULT, now(), 6, 6, 35, 10.90),
-	(DEFAULT, now(), 7, 7, 6, 10.90),
-	(DEFAULT, now(), 8, 8, 10, 10.90),
-	(DEFAULT, now(), 9, 9, 8, 10.90),
-	(DEFAULT, now(), 10, 10, 5, 10.90);
+	(DEFAULT, now(), 1, 1, 10, 10.90, default),
+	(DEFAULT, now(), 2, 2, 15, 10.90, default),
+	(DEFAULT, now(), 3, 3, 20, 10.90, default),
+	(DEFAULT, now(), 4, 4, 25, 10.90, default),
+	(DEFAULT, now(), 5, 5, 19, 10.90, default),
+	(DEFAULT, now(), 6, 6, 35, 10.90, default),
+	(DEFAULT, now(), 7, 7, 6, 10.90, default),
+	(DEFAULT, now(), 8, 8, 10, 10.90, default),
+	(DEFAULT, now(), 9, 9, 8, 10.90, default),
+	(DEFAULT, now(), 10, 10, 5, 10.90, default);
     
 select * from orders;
 select * from orders; 
@@ -82,5 +83,16 @@ desc orders;
 select o.order_number, o.order_date, c.name_client, p.name_product, p.unitary_value, o.quantity, o.total
 from orders o join customers c on o.client_id = c.id
 join products p on o.product_id = p.id;
+show tables;
+desc orders;
+select * from products;
+
+#delete from orders where order_number = 1;
+
+select * from orders where deleted_at is not null;
+select * from orders;
+
+insert into orders values
+	(DEFAULT, now(), 1, 1, 10, 10.90, now());
 
 

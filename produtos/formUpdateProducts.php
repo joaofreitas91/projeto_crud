@@ -13,7 +13,7 @@
 <body>
     <?php
     include_once('../php/connection.php');
-    $select = $connection->query('SELECT * FROM produto WHERE id=' . $_GET["id"]);
+    $select = $connection->query('SELECT * FROM products WHERE id=' . $_GET["id"]);
     $dataProduct = $select->fetchAll();
     // print_r($dataProduct);
     ?>
@@ -21,18 +21,18 @@
     <div class="cont-form">
         <h1 class="title-form">Alteração de Produto</h1>
         <form method="POST" action="./updateProducts.php" class="form">
-            <label for="nome_produto" class="label-form">Nome Produto:</label>
-            <input type="text" class="inp-form" id="nome_produto" name="nome_produto" value="<?php echo $dataProduct[0]["nome_produto"] ?>" autocomplete="off" required />
+            <label for="name_product" class="label-form">Nome Produto:</label>
+            <input type="text" class="inp-form" id="name_product" name="name_product" value="<?php echo $dataProduct[0]["name_product"] ?>" autocomplete="off" required />
 
-            <label for="cod_barras" class="label-form">Código de Barras:</label>
-            <input type="text" class="inp-form" id="cod_barras" name="cod_barras" value="<?php echo $dataProduct[0]["cod_barras"] ?>" autocomplete="off" required />
+            <label for="bar_code" class="label-form">Código de Barras:</label>
+            <input type="text" class="inp-form" id="bar_code" name="bar_code" value="<?php echo $dataProduct[0]["bar_code"] ?>" autocomplete="off" required />
 
-            <label for="valor_unitario" class="label-form">Valor Unitário:</label>
-            <input type="text" class="inp-form" id="valor_unitario" name="valor_unitario" value="<?php echo $dataProduct[0]["valor_unitario"] ?>" autocomplete="off" />
+            <label for="unitary_value" class="label-form">Valor Unitário:</label>
+            <input type="text" class="inp-form" id="unitary_value" name="unitary_value" value="<?php echo $dataProduct[0]["unitary_value"] ?>" autocomplete="off" />
 
             <input type="hidden" name="id" value="<?php echo $dataProduct[0]["id"] ?>" />
             <div class="btns-form">
-                <input type="submit" class="btn-form" value="Alterar Produto" />
+                <input type="submit" class="btn-form" value="Alterar Produto" onclick="cadProduto()" />
                 <input type="button" class="btn-form" value="Voltar" onclick="backProduct()" />
             </div>
         </form>
