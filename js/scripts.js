@@ -1,57 +1,83 @@
-// const inputCpf = document.getElementById('cpf');
+const inputCpf = document.getElementById('cpf');
 
-// if (inputCpf !== null) {
-//     inputCpf.addEventListener('input', (event) => {
-//         event.target.value = mascaraCpf(event.target.value);
-//     });
-// }
-
-// function mascaraCpf(value) {
-//     return value
-//         .replace(/\D/g, '')
-//         .replace(/(\d{3})(\d)/, '$1.$2')
-//         .replace(/(\d{3})(\d)/, '$1.$2')
-//         .replace(/(\d{3})(\d{1,2})/, '$1-$2')
-//         .replace(/(-\d{2})\d+?$/, '$1');
-
-// }
-
-function backHome() {
-    window.location.href = "../index.html"
+if (inputCpf !== null) {
+    inputCpf.addEventListener('input', (event) => {
+        event.target.value = mascaraCpf(event.target.value);
+    });
 }
-function cadClient() {
-    window.location.href = "../cliente/formCreateClient.html"
-}
-function backClient() {
-    window.location.href = "../cliente/readClient.php"
-}
-function cadProduto() {
-    window.location.href = "../produtos/formCreateProducts.html"
-}
-function backProduct() {
-    window.location.href = "../produtos/readProducts.php"
-}
-function cadOrder() {
-    window.location.href = "../order/formCreateOrder.php"
-}
-function backOrder() {
-    window.location.href = "../order/readOrder.php"
+function mascaraCpf(value) {
+    return value
+        .replace(/\D/g, '')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d{1,2})/, '$1-$2')
+        .replace(/(-\d{2})\d+?$/, '$1');
 }
 
+const inpValue = document.getElementById('valor_unitario');
 
-var iptUn = document.getElementById("valor_unitario");
-var inpQt = document.getElementById("quantidade");
-var inpTl = document.getElementById("total");
+if (inpValue) {
+    inpValue.addEventListener('input', (event) => {
+        event.target.value = formatMoneyValue(event.target.value)
+    });
+}
+
+function formatMoneyValue(valueMoney) {
+    valueMoney = parseInt(valueMoney.replace(/\D/g, '')).toString();
+    let formatedValue = '';
+    if (valueMoney === '0' || valueMoney === 'NaN') {
+        formatedValue = '';
+    } else if (valueMoney.length === 1) {
+        formatedValue += '00' + valueMoney;
+    } else if (valueMoney.length === 2) {
+        formatedValue += '0' + valueMoney;
+    } else {
+        formatedValue = valueMoney;
+    }
+    if (formatedValue.length > 0) {
+        const lastTwo = formatedValue.substr(-2);
+        const resto = formatedValue.substr(0, formatedValue.length - 2);
+        formatedValue = resto + ',' + lastTwo;
+        if (formatedValue.length >= 7) {
+            const lastSix = formatedValue.substr(-6);
+            const resto = formatedValue.substr(0, formatedValue.length - 6);
+            formatedValue = resto + '.' + lastSix;
+        }
+        // formatedValue = 'R$ ' + formatedValue;
+    }
+    return formatedValue;
+}
 
 function somar() {
 
-    if (inpQt.value !== "" && iptUn.value !== "") {
+    let iptUn = document.getElementById("valor_unitario");
+    let inpQt = document.getElementById("quantidade");
+    let inpTl = document.getElementById("total");
+
+    if (inpQt.value != "" && iptUn.value != "") {
         let total = inpQt.value * iptUn.value
         inpTl.value = total
     }
 }
 
-// In your Javascript (external .js resource or <script> tag)
-// $(document).ready(function () {
-//     $('.js-example-basic-single').select2();
-// });
+function backHome() {
+    window.location.href = "../index.html"
+}
+function createClient() {
+    window.location.href = "../client/formCreateClient.html"
+}
+function backClient() {
+    window.location.href = "../client/readClient.php"
+}
+function createProduto() {
+    window.location.href = "../products/formCreateProducts.html"
+}
+function backProduct() {
+    window.location.href = "../products/readProducts.php"
+}
+function createOrder() {
+    window.location.href = "../order/formCreateOrder.php"
+}
+function backOrder() {
+    window.location.href = "../order/readOrder.php"
+}

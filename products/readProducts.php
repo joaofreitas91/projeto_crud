@@ -14,7 +14,7 @@
 <body>
     <main>
         <div class="nav-client">
-            <input type="button" value="Cadastrar" class="btn-new" onclick="cadProduto()">
+            <input type="button" value="Cadastrar" class="btn-new" onclick="createProduto()">
             <input type="button" value="Voltar" class="btn-new" onclick="backHome()">
         </div>
         <table>
@@ -27,7 +27,7 @@
             <?php
             include_once('../php/connection.php');
 
-            $produtos = $connection->query('SELECT * FROM products');
+            $produtos = $connection->query('SELECT * FROM products WHERE deleted_at is null');
             foreach ($produtos as $product) {
                 echo  '
                     <tr>

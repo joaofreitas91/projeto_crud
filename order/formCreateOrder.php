@@ -34,7 +34,7 @@
         </select>
 
         <label for="nome_produto">Nome Produto:</label>
-        <select name="name_product" id="name_product">
+        <select name="name_product" id="name_product" onchange="getUnitaryValue(event)">
             <option></option>
             <?php
             include_once('../php/connection.php');
@@ -47,14 +47,24 @@
             ?>
         </select>
 
+        <script>
+            function getUnitaryValue(event) {
+                fetch(`../products/valueProduct.php?id=${event.target.value}`).then(
+                    response => response.json()
+                ).then(
+                    raw => document.getElementById('valor_unitario').value = raw['unitary_value']
+                );
+            }
+        </script>
+
         <label for="valor_unitario">Valor Unitário:</label>
-        <input type="text" id="valor_unitario" name="valor_unitario" autocomplete="off" maxlength="13" oninput="somar()" />
+        <input type="number" id="valor_unitario" name="valor_unitario" autocomplete="off" maxlength="13" oninput="somar()" readonly />
 
         <label for="quantidade">Quantidade:</label>
-        <input type="text" id="quantidade" name="quantidade" autocomplete="off" oninput="somar()" />
+        <input type="number" id="quantidade" name="quantidade" autocomplete="off" oninput="somar()" />
 
         <label for="total">Total</label>
-        <input type="text" id="total" name="total" readonly>
+        <input type="number" id="total" name="total" readonly>
         <!-- <span type="text" id="total" name="total"> Valor Total </span> -->
         <br>
         <!-- <input type="button" value="Somar" onclick="somar()" /> -->

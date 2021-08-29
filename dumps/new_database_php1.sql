@@ -68,18 +68,20 @@ create table if not exists orders(
 );
 
 insert into orders values
-	(DEFAULT, now(), 1, 1, 10, 10.90, default),
-	(DEFAULT, now(), 2, 2, 15, 10.90, default),
-	(DEFAULT, now(), 3, 3, 20, 10.90, default),
-	(DEFAULT, now(), 4, 4, 25, 10.90, default),
-	(DEFAULT, now(), 5, 5, 19, 10.90, default),
-	(DEFAULT, now(), 6, 6, 35, 10.90, default),
-	(DEFAULT, now(), 7, 7, 6, 10.90, default),
-	(DEFAULT, now(), 8, 8, 10, 10.90, default),
-	(DEFAULT, now(), 9, 9, 8, 10.90, default),
-	(DEFAULT, now(), 10, 10, 5, 10.90, default);
+	(DEFAULT, now(), 1, 1, 10.80, 10, 10.90, default),
+	(DEFAULT, now(), 2, 2, 10.80, 15, 10.90, default),
+	(DEFAULT, now(), 3, 3, 10.80, 20, 10.90, default),
+	(DEFAULT, now(), 4, 4, 10.80, 25, 10.90, default),
+	(DEFAULT, now(), 5, 5, 10.80, 19, 10.90, default),
+	(DEFAULT, now(), 6, 6, 10.80, 35, 10.90, default),
+	(DEFAULT, now(), 7, 7, 10.80, 6, 10.90, default),
+	(DEFAULT, now(), 8, 8, 10.80, 10, 10.90, default),
+	(DEFAULT, now(), 9, 9, 10.80, 8, 10.90, default),
+    (DEFAULT, now(), 10, 10, 10.80, 5, 10.90, default);
     
 select * from orders;
+
+UPDATE products SET client_id=3, product_id=1, unitaryValue=10, quantity=10, total=50 WHERE id=1;
 
 
 
