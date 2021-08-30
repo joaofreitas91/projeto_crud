@@ -46,7 +46,7 @@ include_once('../layout/head.php')
                     ]);
                 }
             } catch (PDOException $error) {
-                echo $error->getMessage();
+                // echo $error->getMessage();
             }
             try {
                 //old database
@@ -87,8 +87,21 @@ include_once('../layout/head.php')
                         ":total" =>  $register['unitary_value'] * $register['quantity']
                     ]);
                 }
+                $protocol = $_SERVER['PROTOCOL'] = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 'https://' : 'http://';
+
+                unset($connection);
+                echo "<div class='message-wrapper'>MIGRAÇÃO REALIZADA COM EXITO.</div>";
+
+                $page = $protocol . $_SERVER["HTTP_HOST"] . "/proj_php/index.php";
+                header("Refresh:2; $page");
             } catch (PDOException $error) {
-                echo $error->getMessage();
+                $protocol = $_SERVER['PROTOCOL'] = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 'https://' : 'http://';
+
+                unset($connection);
+                echo "<div class='message-wrapper'>MIGRAÇÃO FALHOU!!! </div>";
+
+                $page = $protocol . $_SERVER["HTTP_HOST"] . "/proj_php/index.php";
+                header("Refresh:2; $page");
             }
             ?>
         </div>

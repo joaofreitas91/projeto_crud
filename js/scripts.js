@@ -30,15 +30,15 @@ function valida(e) {
         }
     }
 
-    if (document.getElementById('cod_barras').value.length !== 13) {
-        alert('preencha 13 numeros')
+    if (document.getElementById('bar_code').value.length !== 13) {
+        alert('O código de barras precisar ter 13 números!')
         return false
     } else {
         e.target.submit()
     }
 }
 
-const inpValue = document.getElementById('valor_unitario');
+const inpValue = document.getElementById('unitary_value');
 
 if (inpValue) {
     inpValue.addEventListener('input', (event) => {
@@ -88,13 +88,13 @@ function backHome() {
     window.location.href = "../index.php"
 }
 function createClient() {
-    window.location.href = "../client/formCreateClient.html"
+    window.location.href = "../client/formCreateClient.php"
 }
 function backClient() {
     window.location.href = "../client/readClient.php"
 }
 function createProduto() {
-    window.location.href = "../products/formCreateProducts.html"
+    window.location.href = "../products/formCreateProducts.php"
 }
 function backProduct() {
     window.location.href = "../products/readProducts.php"
@@ -104,4 +104,15 @@ function createOrder() {
 }
 function backOrder() {
     window.location.href = "../order/readOrder.php"
+}
+function goMigration(e) {
+    e.preventDefault
+
+    var r = confirm("Deseja realizar migração?")
+
+    if (r) {
+        window.location.href = "./migration/migration.php"
+    } else {
+        console.log('não')
+    }
 }

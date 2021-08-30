@@ -16,12 +16,12 @@ include_once('../layout/head.php')
 
     <div class="cont-form">
         <h1 class="title-form">Alteração de Produto</h1>
-        <form method="POST" action="./updateProducts.php" class="form">
+        <form method="POST" action="./updateProducts.php" class="form" onsubmit="valida(event)">
             <label for="name_product" class="label-form">Nome Produto:</label>
-            <input type="text" class="inp-form" id="name_product" name="name_product" value="<?php echo $dataProduct[0]["name_product"] ?>" autocomplete="off" required />
+            <input type="text" class="inp-form" id="name_product" name="name_product" oninput="upperCase(event)" value="<?php echo $dataProduct[0]["name_product"] ?>" autocomplete="off" required />
 
             <label for="bar_code" class="label-form">Código de Barras:</label>
-            <input type="text" class="inp-form" id="bar_code" name="bar_code" value="<?php echo $dataProduct[0]["bar_code"] ?>" autocomplete="off" required />
+            <input type="text" class="inp-form" id="bar_code" name="bar_code" maxlength="13" value="<?php echo $dataProduct[0]["bar_code"] ?>" autocomplete="off" required />
 
             <label for="unitary_value" class="label-form">Valor Unitário:</label>
             <input type="text" class="inp-form" id="unitary_value" name="unitary_value" value="<?php echo $dataProduct[0]["unitary_value"] ?>" autocomplete="off" />

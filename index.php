@@ -33,11 +33,11 @@
                         <p><span>Pedidos</span></p>
                     </a>
                 </li>
-                <li>
-                    <a href="./migration/migration.php">
+                <li onclick="goMigration(event)">
+                    <div class="button-migration">
                         <p><i class="fas fa-exchange-alt"></i></p>
                         <p><span>Migração</span></p>
-                    </a>
+                    </div>
                 </li>
             </ul>
         </nav>
