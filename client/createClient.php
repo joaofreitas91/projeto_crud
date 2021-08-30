@@ -15,11 +15,7 @@ function limpaCPF($valor)
     return $valor;
 }
 
-
 include_once('../php/connection.php');
-
-// $connection->exec("INSERT INTO customers VALUES (DEFAULT, '$name', '" . limpaCPF($cpf) . "', '$email')");
-
 
 $queryyy = $connection->prepare("INSERT INTO customers VALUES (:id, :name, :cpf, :email, :deleted)");
 $queryyy->execute([

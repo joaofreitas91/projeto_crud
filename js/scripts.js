@@ -13,6 +13,30 @@ function mascaraCpf(value) {
         .replace(/(\d{3})(\d{1,2})/, '$1-$2')
         .replace(/(-\d{2})\d+?$/, '$1');
 }
+function upperCase(event) {
+    event.target.value = event.target.value.toUpperCase()
+}
+function valida(e) {
+    e.preventDefault();
+
+    let inpCPF = document.querySelector("#cpf")
+
+    if (inpCPF) {
+        if (inpCPF.value.length < 14) {
+            alert('Preencha o cpf completo');
+            return false;
+        } else {
+            e.target.submit();
+        }
+    }
+
+    if (document.getElementById('cod_barras').value.length !== 13) {
+        alert('preencha 13 numeros')
+        return false
+    } else {
+        e.target.submit()
+    }
+}
 
 const inpValue = document.getElementById('valor_unitario');
 
@@ -61,7 +85,7 @@ function somar() {
 }
 
 function backHome() {
-    window.location.href = "../index.html"
+    window.location.href = "../index.php"
 }
 function createClient() {
     window.location.href = "../client/formCreateClient.html"

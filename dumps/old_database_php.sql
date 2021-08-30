@@ -1,22 +1,22 @@
-drop database if exists migration_php;
+drop database if exists old_database;
 
-create database if not exists migration_php;
+create database if not exists old_database;
 
-use migration_php;
+use old_database;
 
 drop table if exists orders;
 
 create table if not exists orders(
 	id int not null auto_increment primary key,
-    numero_pedido int not null,
-    nome_cliente varchar(100) not null,
+    order_number int not null,
+    name_client varchar(100) not null,
     cpf char(11) not null,
     email nchar(100) not null,
-    dt_pedido datetime not null,
-    cod_barras varchar(20) not null,
-    nome_produto varchar(100),
-    valor_unitario decimal(8,2),
-    quantidade int not null
+    order_date datetime not null,
+    bar_code varchar(20) not null,
+    name_product varchar(100),
+    unitary_value decimal(8,2),
+    quantity int not null
 );
 
 insert into orders values
